@@ -1,0 +1,300 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Обзор Git: Шпаргалка</title>
+
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans'
+    rel='stylesheet'
+    type='text/css'
+  >
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="header">
+    <h1 class="header-title">Обзор Git</h1>
+    <ul class="header-menu">
+      <li class="header-menu_item">
+        <a href="index.html">Обучение</a>
+      </li>
+      <li class="header-menu_item header-menu_item-active">
+        Шпаргалка
+      </li>
+      <li class="header-menu_item">
+        <a href="resources.html">Ресурсы</a>
+      </li>
+      <li class="header-menu_item">
+        <a href="https://github.com/"> <img src="GitHub-Mark-64px.png" width="40" height="40"></a>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div id="cheatsheet-app">
+      <div>
+        <div class="cheatsheet-button button-area-width-2" data-id="git-status">
+          <div class="cheatsheet-trigger button-colored">git status</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="cheatsheet-button button-area-width" data-id="git-diff">
+          <div class="cheatsheet-trigger button-colored">git diff</div>
+        </div>
+        <div class="cheatsheet-button button-area-width" data-id="git-diff-cached">
+          <div class="cheatsheet-trigger button-colored">git diff ––cached</div>
+        </div>
+        <div class="cheatsheet-button button-area-width" data-id="git-log">
+          <div class="cheatsheet-trigger button-colored">git log</div>
+        </div>
+      </div>
+
+      <div class="areas">
+        <div class="area">
+          <h2 class="area-title">Директория</h2>
+
+          <div class="area-container">
+            <div id="arrow-git-add" class="arrow-wrapper arrow-right cheatsheet-button" data-id="git-add">
+              <div class="arrow-hinder"></div>
+              <div class="cheatsheet-trigger arrow-shaft">git add</div>
+              <div class="arrow-hinder"></div>
+              <div class="cheatsheet-trigger arrow-head"></div>
+            </div>
+
+            <div id="arrow-git-commit-a" class="arrow-wrapper arrow-right cheatsheet-button" data-id="git-commit-a">
+              <div class="arrow-hinder"></div>
+              <div class="cheatsheet-trigger arrow-shaft">git commit –am</div>
+              <div class="arrow-hinder"></div>
+              <div class="cheatsheet-trigger arrow-head"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <h2 class="area-title">Индекс</h2>
+
+          <div class="area-container">
+            <div id="arrow-git-commit" class="arrow-wrapper arrow-right cheatsheet-button" data-id="git-commit">
+              <div class="arrow-hinder"></div>
+              <div class="cheatsheet-trigger arrow-shaft">git commit –m</div>
+              <div class="arrow-hinder"></div>
+              <div class="cheatsheet-trigger arrow-head"></div>
+            </div>
+
+            <div id="arrow-git-reset-head" class="arrow-wrapper arrow-left cheatsheet-button" data-id="git-reset-head">
+              <div class="arrow-hinder"></div>
+              <div class="cheatsheet-trigger arrow-shaft">git reset HEAD</div>
+              <div class="arrow-hinder"></div>
+              <div class="cheatsheet-trigger arrow-head"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="area">
+          <h2 class="area-title">Хранилище</h2>
+
+          <div class="area-container">
+            <div id="arrow-git-reset-soft" class="arrow-wrapper arrow-left cheatsheet-button" data-id="git-reset-soft">
+              <div class="arrow-hinder"></div>
+              <div class="cheatsheet-trigger arrow-shaft">git reset ––soft HEAD~</div>
+              <div class="arrow-hinder"></div>
+              <div class="cheatsheet-trigger arrow-head"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cheatsheet-details">
+      <div class="command-details git-add-details hidden">
+        <h2>
+          git add
+          <span class="details-placeholder">ключи</span>
+          <a href="https://git-scm.com/docs/git-add" ><img src="external-link-icon.png" width="16" height="16">
+          </a>
+        </h2>
+
+        <h3>Описание</h3>
+        <p>Добавляет изменения в индекс</p>
+
+        <h3>Ключи</h3>
+        <dl>
+          <dt class="details-placeholder">.</dt>
+          <dd>Добавляет все измененные файлы.</dd>
+
+          <dt class="details-placeholder">папка</dt>
+          <dd>Включает все изменения внутри папок и сами папки.</dd>
+
+          <dt class="details-placeholder">файл</dt>
+          <dd>Включает все изменения файла.</dd>
+
+          <dt class="details-placeholder">–u</dt>
+          <dd>Включает все изменения уже отслеживаемых файлов.</dd>
+        </dl>
+      </div>
+      <div class="command-details git-commit-details hidden">
+        <h2>
+          git commit –m
+          <span class="details-placeholder">сообщение</span>
+          <a href="https://git-scm.com/docs/git-commit" > <img src="external-link-icon.png" width="16" height="16">
+            
+          </a>
+        </h2>
+
+        <h3>Описание</h3>
+        <p>
+          Объединяет все изменения в отдельный коммит и дает ему соответствующее сообщение, данное в качестве параметра ключа.
+        </p>
+      </div>
+      <div class="command-details git-commit-a-details hidden">
+        <h2>
+          git commit –am
+          <span class="details-placeholder">сообщение</span>
+          <a href="https://git-scm.com/docs/git-commit" > <img src="external-link-icon.png" width="16" height="16">
+            
+          </a>
+        </h2>
+
+        <h3>Описание</h3>
+        <p>
+		  Добавляет все изменения в отслеживаемых файлах из рабочей директории в отдельный коммит 
+		  с переданным в качестве параметра ключа сообщением.
+        </p>
+      </div>
+      <div class="command-details git-reset-head-details hidden">
+        <h2>
+          git reset HEAD
+          <span class="details-placeholder">ключи</span>
+          <a href="https://git-scm.com/docs/git-reset"> <img src="external-link-icon.png" width="16" height="16">
+            
+          </a>
+        </h2>
+
+        <h3>Описание</h3>
+        <p>
+		  Удаляет изменения из индекса и хранит их только в рабочей директории.
+        </p>
+        <p>
+          Можно передать те же ключи в команду
+          <span class="details-placeholder">git add</span> для выбора тех изменений, которые нужно удалить.
+        </p>
+      </div>
+      <div class="command-details git-reset-soft-details hidden">
+        <h2>
+          git reset ––soft HEAD~
+          <a href="https://git-scm.com/docs/git-reset" > <img src="external-link-icon.png" width="16" height="16">
+            
+          </a>
+        </h2>
+
+        <h3>Описание</h3>
+        <p>
+		  Отменяет последний коммит. Изменения все еще будут храниться в индексе.
+        </p>
+      </div>
+      <div class="command-details git-diff-details hidden">
+        <h2>
+          git diff
+          <a href="https://git-scm.com/docs/git-diff" > <img src="external-link-icon.png" width="16" height="16">
+            
+          </a>
+        </h2>
+
+        <h3>Описание</h3>
+        <p>
+          Показывает изменения всех отслеживаемых файлах в рабочей директории.
+        </p>
+      </div>
+      <div class="command-details git-diff-cached-details hidden">
+        <h2>
+          git diff ––cached
+          <a href="https://git-scm.com/docs/git-diff" > <img src="external-link-icon.png" width="16" height="16">
+            
+          </a>
+        </h2>
+
+        <h3>Описание</h3>
+        <p>
+          Показывает изменения файлов в индексе.
+        </p>
+      </div>
+      <div class="command-details git-log-details hidden">
+        <h2>
+          git log
+          <span class="details-placeholder">ключи</span>
+          <a href="https://git-scm.com/docs/git-log" > <img src="external-link-icon.png" width="16" height="16">
+            
+          </a>
+        </h2>
+
+        <h3>Описание</h3>
+        <p>
+          Показывает историю коммитов.
+        </p>
+
+        <h3>Ключи</h3>
+        <dl>
+          <dt class="details-placeholder">––oneline</dt>
+          <dd>Вывод в сокращенном формате, показываются только сокращенных хэш и заголовок.</dd>
+
+          <dt class="details-placeholder">–p</dt>
+          <dd>Также показывается разница в измененных файлах.</dd>
+
+          <dt class="details-placeholder">––stat</dt>
+          <dd>Также показывается статистика по количеству удалений и добавлений к каждому коммиту.</dd>
+        </dl>
+      </div>
+      <div class="command-details git-status-details hidden">
+        <h2>
+          git status
+          <span class="details-placeholder">ключи</span>
+          <a href="https://git-scm.com/docs/git-status" > <img src="external-link-icon.png" width="16" height="16">
+            
+          </a>
+        </h2>
+
+        <h3>Описание</h3>
+        <p>
+		  Показывает имена файлов с изменениями в рабочей директории и индексе.
+        </p>
+
+        <h3>Ключи</h3>
+        <dl>
+          <dt class="details-placeholder">–s</dt>
+          <dd>Вывод в сокращенном формате.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <script
+    src="https://code.jquery.com/jquery-2.2.4.min.js"
+  </script>
+  <script
+    src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"
+    type="text/javascript">
+  </script>
+  <script type="text/javascript">
+    $(function() {
+      $('.cheatsheet-trigger').click(function() {
+        var button = $(this).parent('.cheatsheet-button')
+        var id = button.data('id')
+        var visibleDiv = $('.command-details.visible')
+
+        var showDetails = function() {
+          $('.' + id + '-details').fadeIn(300, function() {
+            $(this).toggleClass('hidden visible')
+          })
+        }
+
+        $('.cheatsheet-button.button-selected').removeClass('button-selected')
+        button.toggleClass('button-selected')
+
+        if(visibleDiv.length > 0) {
+          visibleDiv.fadeOut(300, showDetails).removeClass('visible')
+        } else {
+          showDetails()
+        }
+      })
+    })
+  </script>
+</body>
+</html>

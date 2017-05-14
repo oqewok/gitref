@@ -1,0 +1,509 @@
+﻿<html>
+<head>
+  <meta charset="utf-8">
+  <title>Обзор Git: Обучение</title>
+
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans'
+    rel='stylesheet'
+    type='text/css'
+  >  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="header">
+    <h1 class="header-title">Обзор Git</h1>
+    <ul class="header-menu">
+      <li class="header-menu_item header-menu_item-active">
+        Обучение
+      </li>
+      <li class="header-menu_item">
+        <a href="cheatsheet.html">Шпаргалка</a>
+      </li>
+      <li class="header-menu_item">
+        <a href="resources.html">Ресурсы</a>
+      </li>
+	  <li class="header-menu_item">
+        <a href="https://github.com/"> <img src="GitHub-Mark-64px.png" width="40" height="40"></a>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div id="side-bar">
+      <div class="instructions">
+        <div class="step step1" data-id="1">
+          <h3><span class="instructions-step">1/13</span> Вступление</h3>
+
+          <div class="instructions-message">
+            <h5>
+              <span class="octicon octicon-info"></span>
+              Инструкции
+            </h5>
+
+            <p>
+              Каждый шаг Обучения начинается с чтения текста. В конце текста
+			  располагается кнопка, выполняющая git команду.
+            </p>
+            <p>
+              После нажатия кнопки происходят 4 вещи в слудующем порядке:
+            </p>
+            <ul>
+              <li>В консоли (слева снизу): Команда будет добавлена и исполнена.</li>
+              <li>Справа: Анимация покажет, что сделает команда.</li>
+              <li>Когда анимация закончится, в консоль будет показан вывод (результат).</li>
+              <li>Справа от кнопки появится приглашение на следующий шаг обучения.</li>
+            </ul>
+          </div>
+
+          <p>
+            Официальное определение git – "распределенная система контроля версий".
+            Что же это значит? Давайте посмотрим на примере.
+          </p>
+          <p>
+            В следующей таблице мы наблюдаем изменения файлов:
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Время</th>
+                <th>Статус</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>7 Июля, 10:00</td>
+                <td>Создан файл <span class="instructions-term">tasks.txt</span>.</td>
+              </tr>
+              <tr>
+                <td>7 Июля, 10:05</td>
+                <td>
+                  Добавлен абзац <span class="instructions-term">tasks.txt</span>.
+                </td>
+              </tr>
+              <tr>
+                <td>J7 Июля, 10:10</td>
+                <td>
+                  Форматирование содержимого файла <span class="instructions-term">tasks.txt</span>.
+                </td>
+              </tr>
+              <tr>
+                <td>…</td>
+                <td>…</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+			Можно представить, что каждая строка таблицы является версией файла.
+			Получается, что git это система, которая помогает нам следить за версиями
+			или изменениями файлов сквозь время (что означает "распределенная" будет
+			раскрыто далее по ходу обучения).
+          </p>
+
+          <h4>Основы git</h4>
+          <p>
+            Чтобы инициализовать git внутри директории, мы должны использовать команду
+            <span class="instructions-term">git init</span>. После исполнения данной команды, git создаст 
+			собственную директорию, храняющую данные для отслеживания изменений файлов.
+          </p>
+          <p>
+            У git есть три внутренних состояния (которые также называются областями):
+            рабочая директория, индекс (иначе: область подготовленных файлов) и хранилище.
+          </p>
+          <p>
+            Нажмите на команду, а затем Далее.
+          </p>
+
+          <a class="command-trigger">
+            git init
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step2" data-id="2">
+          <h3><span class="instructions-step">2/13</span> Первые изменения</h3>
+
+          <p>
+            Чтобы увидеть git в действии, создадим обычный файл.
+            Для этого можно исользовать команду
+            <span class="instructions-term">touch</span> и передать его имя в качестве первого
+			элемента (Это команда ОС, а не git).
+          </p>
+          <p>
+            Эта команда создаст новый файл с именем <span class="instructions-term">tasks.txt</span>.
+            В этом файле будем хранить список заданий, которые необходимо сделать.
+          </p>
+          <p>
+			Если файл находится в области рабочей директории, то git следит за всем изменениями,
+			которые произошли с файлом. Давайте скажем git моместить этот файл в область.
+          </p>
+          <a class="command-trigger">
+            touch tasks.txt
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step3" data-id="3">
+          <h3>
+            <span class="instructions-step">3/13</span> Добавление изменений в индекс
+          </h3>
+          <p>
+            <span class="instructions-term">Коммит</span> это изменение или
+			группа изменений, которые мы объединяем в одно целое для хранения
+			в системе контроля версий. Коммит создается в два шага: на превом
+			в индекс добавляются все, которые мы хотим увидеть в 
+            <span class="instructions-term">индексе</span>.
+          </p>
+          <p>
+            Для добавления изменений в <span class="instructions-term">индекс</span>
+            используется комада <span class="instructions-term">git add</span>.
+            Следующая команда перенесет изменения файла
+            <span class="instructions-term">tasks.txt</span> из рабочей директории в индекс.
+          </p>
+
+          <a class="command-trigger">
+            git add tasks.txt
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step4" data-id="4">
+          <h3>
+            <span class="instructions-step">4/13</span> Создаем свой первый коммит
+          </h3>
+
+          <p>
+            Ранее мы видели первый шаг из двух на пути к созданию коммита.
+          </p>
+          <p>
+            Второй шаг явно указывает git совместить все изменения, в данный момент находящиеся
+			в индексе (области подготовленных файлов), в единый узел коммита.
+			Это делает команда <span class="instructions-term">git commit</span>.
+          </p>
+          <p>
+            Каждому коммиту нужно давать емкий комментарий, описывающий произведенные изменения.
+			Так мы сможем с легкостью просмотривать историю всех изменений в будущем.
+            Чтобы оставить такое сообщение, после команды <span class="instructions-term">git commit</span>
+            используется ключ <span class="instructions-term">–m</span>.
+          </p>
+          <p>
+            Следующая команда создаст наш первый коммит с комментарием
+			указанного содержания.
+            <span class="instructions-term">Добавлен файл tasks.txt</span>.
+          </p>
+          <a class="command-trigger">
+            git commit –m "Добавлен файл tasks.txt"
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step5" data-id="5">
+          <h3><span class="instructions-step">5/13</span> Изменение файла</h3>
+
+          <p>
+            Команда <span class="instructions-term">echo</span> вместе с 
+            <span class="instructions-term">&gt;&gt;</span> Добавляет линии в конец файла.
+          </p>
+          <p>
+            Первая задача, которую мы хотим выполнить – <span class="instructions-term">Купить молока</span>.
+            Итак, добавляем ее в <span class="instructions-term">tasks.txt</span>
+            с помощью команды <span class="instructions-term">echo</span>.
+          </p>
+          <p>
+            Look how git tells us that the file has changed by adding it to the
+            working directory area.
+			Посмотрим, как git горовит нам, что файл изменился, добавлением его в рабочую директорию.
+          </p>
+          <a class="command-trigger">
+            echo "Купить молока" &gt;&gt; tasks.txt
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step6" data-id="6">
+          <h3><span class="instructions-step">6/13</span> Git status</h3>
+
+          <p>
+            Другая полезная команда <span class="instructions-term">git status</span>.
+            Эта команда показывает нам все изменения в рабочем каталоге и в 
+			области слежения.
+          </p>
+          <p>
+            Посмотрим на вывод команды в консоли (в левом нижнем углу).
+            <span class="instructions-term">git status</span> показывает, что
+			Изменения не отслеживаются индексом (это означает, что изменения есть, но никуда
+			не занесены и остаются только внутри рабочей области). Все измененнные файлы
+			внутри рабочей директори будут показаны в красном цвете. И файл
+            <span class="instructions-term">tasks.txt</span> имеет статус изменен, т.к. 
+			мы добавили к нему строку на предыдущем шаге.
+          </p>
+          <a class="command-trigger">
+            git status
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step7" data-id="7">
+          <h3>
+            <span class="instructions-step">7/13</span> Развернутый список изменений
+          </h3>
+
+          <p>
+            Команда <span class="instructions-term">git status</span> лишь показывает нам, какие файлы 
+			подверглись изменению. Если же мы хотим узнать, что изменилось в каждом конкретном файле из 
+			рабочей директории, мы можем использовать команду <span class="instructions-term">git diff</span>.
+          </p>
+          <p>
+            В выводе команды <span class="instructions-term">git diff</span>
+            строки, что были добавлены в файл показаны зеленым цветом, а те, что были удалены, – красным.
+          </p>
+          <a class="command-trigger">
+            git diff
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step8" data-id="8">
+          <h3><span class="instructions-step">8/13</span> Добавление еще раз</h3>
+
+          <p>
+            Мы хотим создать другой коммит, вклчающий изменения в файле
+            <span class="instructions-term">tasks.txt</span>. Нужно добавить изменения в индекс 
+			вновь с помощью команды 
+            <span class="instructions-term">git add</span>.
+          </p>
+          <a class="command-trigger">
+            git add tasks.txt
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step9" data-id="9">
+          <h3><span class="instructions-step">9/13</span> Git status 2</h3>
+
+          <p>
+            Используем команду <span class="instructions-term">git status</span>
+            еще раз, чтобы увидеть сооюбщение от git о том, что мы имеем изменения, занесенные в индекс.
+            Файл <span class="instructions-term">tasks.txt</span> все еще представлен со статусом "изменен", но 
+			цвет сообщения поменялся на зелёный, который означает, что изменения были внесены в индекс.
+          </p>
+
+          <a class="command-trigger">
+            git status
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step10" data-id="10">
+          <h3><span class="instructions-step">10/13</span> Развернутый список изменений 2</h3>
+
+          <p>
+            На шаге 7 мы использовали команду <span class="instructions-term">git diff</span>
+            для отображения детального списка изменений, имевшихся в рабочей директории.
+          </p>
+          <p>
+            Эта команда также может показать изменения и в индексе, если для нее передать ключ 
+			<span class="instructions-term">––cached</span>.
+          </p>
+          <p>
+            В выводе присутствуют сообщения тех же цветов: добаленные строки показаны зеленым, 
+			удаленные – красным.
+          </p>
+          <a class="command-trigger">
+            git diff ––cached
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step11" data-id="11">
+          <h3><span class="instructions-step">11/13</span> Наш второй коммит</h3>
+
+          <p>
+            Нашим новым коммитом станут все изменения, внесенные в индекс.
+            Используем команду <span class="instructions-term">git commit</span>
+            вновь и передадим сообщение, описывающее этот коммит.
+          </p>
+          <a class="command-trigger">
+            git commit –m "Добавлено первое задание"
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step12" data-id="12">
+          <h3><span class="instructions-step">12/13</span> Просмотр коммитов</h3>
+
+          <p>
+            Команда, изучением которой заканчивается данное Обучение – 
+			<span class="instructions-term">git log</span>. Эта команда показывает 
+			все сделанные коммиты. Давайте рассмотрим ее поближе.
+          </p>
+          <p>
+            <span class="instructions-term">git log</span> имеет множество опций (ключей), 
+			с применением которых она может быть вызвана, что влияет на вывод и его детализацию. 
+			Давайте используем ключ 
+            <span class="instructions-term">––oneline</span>, чтобы увидеть вывод в минимальной детализации.
+          </p>
+          <a class="command-trigger">
+            git log ––oneline
+          </a>
+          <a class="instructions-link next-step hidden">Далее</a>
+        </div>
+        <div class="hidden step step13" data-id="13">
+          <h3><span class="instructions-step">13/13</span> Завершение</h3>
+
+          <p>
+            В данном Обучении была представлена система контроля версий git, раскрыта ее концепция использования:
+			мы прошли через описание, сравнение ее с каталогом изменений. Было представлено большинство команд базовых команды, 
+			которые необходимо знать пользователю распределенной системы контроля версий для совершения первых удачных шагов в 
+			применении git в своих персональных проектах.
+          </p>
+          <p>
+            Если вы хотите узнать больше о git и работе с ним, раздел <a class="instructions-link"
+            href="resources.html">Ресурсы</a> содержит список ссылок на ресурсы, которые помогут вам расширить свои знания.
+          </p>
+          <p>
+            Также можно использовать раздел <a class="instructions-link" href="cheatsheet.html">
+            Шпаргалка</a> в качестве руководства, где можно посмотреть ключевые команды, их описание, ключи к ним.
+          </p>
+        </div>
+      </div>
+      <div class="console">
+        <div class="console-command-group step1">
+          <span class="console-prompt">&gt;</span>
+          <span class="console-bash-command"></span>
+          <div class="console-output hidden">
+            Initialized empty git repository in my_folder/.git/
+          </div>
+        </div>
+        <div class="console-command-group step2">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+        </div>
+        <div class="console-command-group step3">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+        </div>
+        <div class="console-command-group step4">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+          <div class="console-output hidden">
+            <div>
+              [master (root-commit) <span>cc04c1f</span>] <span>Add file tasks.txt</span>
+            </div>
+            <div> 1 file changed, 0 insertions(+), 0 deletions(-)</div>
+            <div> create mode 100644 <span>fileName</span></div>
+          </div>
+        </div>
+        <div class="console-command-group step5">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+        </div>
+        <div class="console-command-group step6">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+          <div class="console-output hidden">
+            <div>On branch master</div>
+            <div>Changes not staged for commit:</div>
+            <div class="console-indented-output">
+              (use "git add &lt;file&gt;..." to update what will be committed)
+            </div>
+            <div class="console-indented-output">
+              (use "git checkout –– &lt;file&gt;..." to discard changes in working directory)
+            </div>
+            <div class="console-indented2-output console-red-output">
+              modified: tasks.txt
+            </div>
+            <div>
+              no changes added to commit (use "git add" and/or "git commit –a")
+            </div>
+          </div>
+        </div>
+        <div class="console-command-group step7">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+          <div class="console-output hidden">
+            <div>diff ––git a/tasks.txt b/tasks.txt</div>
+            <div>index e69de29..557fb5d 100644</div>
+            <div>––– a/tasks.txt</div>
+            <div>+++ b/tasks.txt</div>
+            <div class="console-blue-output">@@ -0,0 +1 @@</div>
+            <div class="console-green-output">+– Купить молока</div>
+          </div>
+        </div>
+        <div class="console-command-group step8">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+        </div>
+        <div class="console-command-group step9">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+          <div class="console-output hidden">
+            <div>On branch master</div>
+            <div>Changes to be commited:</div>
+            <div class="console-indented-output">
+              (use "git reset HEAD &lt;file&gt;..." to unstage)
+            </div>
+            <div class="console-indented2-output console-green-output">
+              modified: tasks.txt
+            </div>
+          </div>
+        </div>
+        <div class="console-command-group step10">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+          <div class="console-output hidden">
+            <div>diff ––git a/tasks.txt b/tasks.txt</div>
+            <div>index e69de29..557fb5d 100644</div>
+            <div>––– a/tasks.txt</div>
+            <div>+++ b/tasks.txt</div>
+            <div class="console-blue-output">@@ -0,0 +1 @@</div>
+            <div class="console-green-output">+– Купить молока</div>
+          </div>
+        </div>
+        <div class="console-command-group step11">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+          <div class="console-output hidden">
+            <div>[master <span>ff5dac2</span>] <span>Добавлено первое задание</span></div>
+            <div> 1 file changed, 1 insertions(+)</div>
+          </div>
+        </div>
+        <div class="console-command-group step12">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+          <div class="console-output hidden">
+            <div>
+              <span class="console-yellow-output">ff5dac2</span>
+              Добавлено первое задание
+            </div>
+            <div>
+              <span class="console-yellow-output">cc04c1f</span>
+              Добавлен файл tasks.txt
+            </div>
+          </div>
+        </div>
+        <div class="console-command-group step13">
+          <span class="console-prompt hidden">&gt;</span>
+          <span class="console-bash-command"></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="app">
+      <div class="area hidden">
+        <h2 class="area-title hidden">Рабочая директория</h2>
+        <div id="working-dir">
+        </div>
+      </div>
+      <div class="area hidden">
+        <h2 class="area-title hidden">Область (индекс)</h2>
+        <div id="staging">
+        </div>
+      </div>
+      <div class="area hidden">
+        <h2 class="area-title hidden">Локальное хранилище</h2>
+        <div id="local-repository">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script
+    src="https://code.jquery.com/jquery-2.2.4.min.js">
+  </script>
+  <script
+    src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"
+    type="text/javascript">
+  </script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
